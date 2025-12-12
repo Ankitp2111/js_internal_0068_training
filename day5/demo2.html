@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example of dom with js</title>
+</head>
+<body>
+    <h1 id="hid1">this is first heading</h1>
+    <h2 id="hid2">this is second heading</h2>
+    <button id="bid1" onclick="fun1()">click1</button>
+    <button id="bid2" onclick="fun2()">click2</button>
+
+    <script>
+
+       function fun1(){
+
+            document.getElementById("hid1").innerHTML="new value";
+            document.getElementById("hid2").innerHTML="changed";
+
+        }
+
+        function fun2(){
+            document.getElementById("hid1").style.color="green";
+            document.getElementById("hid2").style.color="blue";
+
+        }
+
+    </script>
+</body>
+</html>

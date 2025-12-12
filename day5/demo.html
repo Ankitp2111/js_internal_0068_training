@@ -1,0 +1,57 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example of dom with js</title>
+</head>
+<body><h1 id="hid1">this is first heading</h1>
+    <h2 id="hid2">this is second heading</h2>
+    <button onclick= "fun1()" >click1</button>
+    <button onclick= "fun2()" >click2</button>
+    <script>
+           function fun1(){
+
+            document.getElementById("hid1").innerHTML="new value";
+            document.getElementById("hid1").style.color="blue";
+        }
+
+        function fun2(){
+            document.getElementById("hid2").innerHTML="changed";
+            document.getElementById("hid2").style.color="green";
+        }
+
+
+
+    </script>
+</body>
+</html>  -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Background Changer</title>
+</head>
+<body>
+
+    <h2>Click a Button to Change Background</h2>
+
+    <button id="btn1">Red</button>
+    <button id="btn2">Green</button>
+    <button id="btn3">Blue</button>
+
+    <script>
+        document.getElementById("btn1").onclick = function () {
+            document.body.style.backgroundColor = "red";
+        };
+
+        document.getElementById("btn2").onclick = function () {
+            document.body.style.backgroundColor = "green";
+        };
+
+        document.getElementById("btn3").onclick = function () {
+            document.body.style.backgroundColor = "blue";
+        };
+    </script>
+
+</body>
+</html>
