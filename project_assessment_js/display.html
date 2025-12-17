@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Successful</title>
+  <style>
+    * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: #f0fdf4;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1f2937;
+}
+
+.container {
+  width: 560px;
+  background-color: #ffffff;
+  padding: 38px 42px;
+  border-radius: 10px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+.success-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #166534;
+  margin-bottom: 28px;
+}
+
+.details p {
+  font-size: 15px;
+  margin: 16px 0;
+  color: #111827;
+}
+
+.details strong {
+  display: inline-block;
+  width: 90px;
+  color: #334155;
+}
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  
+
+  <div class="success-title">Registration Successful!</div>
+
+  <div class="details">
+    <p><strong>Name:</strong> <span id="name"></span></p>
+    <p><strong>Email:</strong> <span id="email"></span></p>
+    <p><strong>Gender:</strong> <span id="gender"></span></p>
+    <p><strong>Course:</strong> <span id="course"></span></p>
+  </div>
+</div>
+
+<script>
+  document.getElementById("name").innerText = localStorage.getItem("name");
+  document.getElementById("email").innerText = localStorage.getItem("email");
+  document.getElementById("gender").innerText = localStorage.getItem("gender");
+  document.getElementById("course").innerText = localStorage.getItem("course");
+</script>
+
+</body>
+</html>
