@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2f3;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 450px;
+            margin: auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 12px;
+        }
+
+        .required {
+            color: red;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .gender-group {
+            margin-top: 6px;
+        }
+
+        .terms {
+            margin-top: 12px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 18px;
+            padding: 10px;
+            font-size: 16px;
+            background: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .message {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Student Registration Form</h2>
+
+    <form id="registrationForm" novalidate>
+
+        <label>Name <span class="required">*</span></label>
+        <input type="text" id="name">
+
+        <label>Email <span class="required">*</span></label>
+        <input type="email" id="email">
+
+        <label>Gender <span class="required">*</span></label>
+        <div class="gender-group">
+            <input type="radio" name="gender" value="Male"> Male
+            <input type="radio" name="gender" value="Female"> Female
+        </div>
+
+        <label>Course <span class="required">*</span></label>
+        <select id="course">
+            <option value="">-- Select Course --</option>
+            <option>Java</option>
+            <option>JavaScript</option>
+            <option>Python</option>
+            <option>C#</option>
+        </select>
+
+        <div class="terms">
+            <input type="checkbox" id="terms">
+            I agree to Terms & Conditions <span class="required">*</span>
+        </div>
+
+        <button type="submit">Register</button>
+
+        <!-- Single Message Area -->
+        <div id="message" class="message"></div>
+
+    </form>
+</div>
+
+<script>
+    document.getElementById("registrationForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const course = document.getElementById("course").value;
+        const terms = document.getElementById("terms").checked;
+        const genders = document.getElementsByName("gender");
+
+        let gender = "";
+        for (let g of genders) {
+            if (g.checked) gender = g.value;
+        }
+
+        const message = document.getElementById("message");
+        message.innerText = "";
+        message.className = "message";
+
+        /* Validation in order – stops at first error */
+
+        if (name === "") {
+            message.innerText = "Name should not be empty";
+            message.classList.add("error");
+            return;
+        }
+
+        if (email === "") {
+            message.innerText = "Email should be valid";
+            message.classList.add("error");
+            return;
+        }
+
+        if (gender === "") {
+            message.innerText = "Genter must be selected";
+            message.classList.add("error");
+            return;
+        }
+
+        if (course === "") {
+            message.innerText = "Course must be checked";
+            message.classList.add("error");
+            return;
+        }
+
+        if (!terms) {
+            message.innerText = "Terms checkbox must be checked";
+            message.classList.add("error");
+            return;
+        }
+
+        /* Success */
+        message.innerText = "Registration Successful!";
+        message.classList.add("success");
+
+        localStorage.setItem("name", name);
+        localStorage.setItem("email", email);
+        localStorage.setItem("gender", gender);
+        localStorage.setItem("course", course);
+
+        setTimeout(() => {
+            window.location.href = "display.html";
+        }, 1500);
+    });
+</script>
+
+</body>
+</html>
